@@ -1,14 +1,15 @@
 <template>
-  <Banner />
+  <Header/>
+  <router-view/>
 </template>
 
 <script>
-import Banner from './components/Banner.vue'
+import Header from "./components/Header.vue";
 
 export default {
-  name: 'App',
+  name: 'HomeA',
   components: {
-    Banner
+    Header,
   }
 }
 </script>
