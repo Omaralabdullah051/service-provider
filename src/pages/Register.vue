@@ -1,5 +1,7 @@
 <template>
-     <div className='auth-container'>
+     <div className='auth-container' data-aos="zoom-out-up"
+            data-aos-easing="linear"
+            data-aos-duration="1000">
             <h4 className='text-center font-bold mt-4 text-slate-700'>Please Register</h4>
             <form @submit.prevent="handleSubmit" className='form-container mt-12'>
                 <input type="text" name="name" id="name" placeholder='Your name' v-model="name" required/>
@@ -21,7 +23,6 @@
 </template>
 
 <script>
-// import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth, sendEmailVerification, sendPasswordResetEmail, updateProfile } from "firebase/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import auth from "../firebase.init";
 import {reactive,toRefs,ref} from "vue";

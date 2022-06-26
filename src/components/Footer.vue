@@ -2,16 +2,20 @@
     <footer className="bg-slate-800 mt-80">
             <div className='md:flex justify-around items-center text-center md:text-justify'>
                 <div>
-                    <img className='mx-auto w-3/6 md:mx-0 md:w-full' src="images/camera-2.png" alt="" />
+                    <img data-aos="flip-up"
+            data-aos-easing="linear"
+            data-aos-duration="1000" className='mx-auto w-3/6 md:mx-0 md:w-full' src="images/camera-2.png" alt="" />
                 </div>
-                <div className='text-white space-y-3'>
+                <div className='text-white space-y-3' data-aos="zoom-in"
+            data-aos-easing="linear"
+            data-aos-duration="1000">
                     <h6>Contact Info</h6>
                     <p><font-awesome-icon class='mr-4' icon="fa-solid fa-phone" />+1 (212)-695-3818</p>
                     <p><font-awesome-icon class='mr-4' icon="fa-solid fa-envelope" />info@serviceup.com</p>
                     <p><font-awesome-icon class='mr-4' icon="fa-solid fa-location-dot" />463 7th Ave, NY 10018, BD</p>
                 </div>
             </div>
-            <p className='text-white text-center p-10'><small><FontAwesomeIcon className='mr-1' icon={faCopyright} />{{year}}. All Right Reserved</small></p>
+            <p className='text-white text-center p-10'><small><font-awesome-icon class='mr-1' icon="fa-solid fa-copyright" />{{year}}. All Right Reserved</small></p>
         </footer>
 </template>
 

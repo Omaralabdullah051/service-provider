@@ -1,5 +1,7 @@
 <template>
-     <div className='p-10 font-semibold text-justify space-y-8'>
+     <div className='p-10 font-semibold text-justify space-y-8' data-aos="zoom-out-up"
+            data-aos-easing="linear"
+            data-aos-duration="1000">
             <p className='text-xs md:text-base '>Photography is a fun and fascinating process. It's easier now than ever to get started too. Long gone are the days of needing portable darkrooms or waiting hours to take a single photograph. You can dive in and start snapping away at anything that piques your interest.</p>
             <p className='text-xs md:text-base '>It's easier now than ever to get started too. Long gone are the days of needing portable darkrooms or waiting hours to take a single photograph. You can dive in and start snapping away at anything that piques your interest. Since the technical barrier to photography has been drastically reduced, we have much more time to focus on how to take good pictures. We've compiled 47 photography tips for beginners that show quick ways to improve photography techniques without overcomplicating things.</p>
             <p className='text-xs md:text-base '>Photography rules are essential because they provide a foundation for more advanced photography tips and tricks later on. Learn the rules first, so you have more creative control when breaking them later. Learn as you go — don't let it prevent you from picking up a camera.</p>

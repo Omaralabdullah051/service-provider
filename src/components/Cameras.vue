@@ -1,8 +1,12 @@
 <template>
      <div className='mt-20'>
-              <h4 className='font-bold text-center text-slate-800 md:text-4xl'>Landscape photography</h4>
+              <h4 className='font-bold text-center text-slate-800 md:text-4xl' data-aos="zoom-in"
+            data-aos-easing="linear"
+            data-aos-duration="1000">Landscape photography</h4>
              <div className='lg:grid grid-cols-3 lg:gap-4 xl:gap-10 p-3 lg:p-4 xl:p-12'>
-            <div v-for="camera in cameraInfo" :key="camera.id">
+            <div v-for="camera in cameraInfo" :key="camera.id" data-aos="zoom-in-right"
+            data-aos-easing="linear"
+            data-aos-duration="1000">
                     <Camera :camera="camera"/>
             </div>
             </div>

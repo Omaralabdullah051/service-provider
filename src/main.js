@@ -58,20 +58,20 @@ router.beforeEach(async (to, from, next) => {
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 
-/* import font awesome icon component */
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-/* import specific icons */
 import {
   faCheck,
   faPhone,
   faEnvelope,
   faLocationDot,
+  faCopyright,
 } from "@fortawesome/free-solid-svg-icons";
 
-/* add icons to the library */
+import AOS from "aos";
+AOS.init();
 
-library.add(faCheck, faPhone, faEnvelope, faLocationDot);
+library.add(faCheck, faPhone, faEnvelope, faLocationDot, faCopyright);
 
 const app = createApp(App);
 

@@ -27,3 +27,5 @@ In the overall project, you will found:
 - I used tailwind css with some customization in base layer directives.
 
 - I installed Vue Fontawesome to add some icons.
+
+- I installed AOS to add some scroll animations.
