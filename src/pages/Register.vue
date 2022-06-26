@@ -12,6 +12,7 @@
                 <input type="password" name="confirm-password" id="confirm-password" placeholder='Confirm password' v-model="confirmPassword" required/>
                 <p v-if="!confirmPassword"></p>
                 <p className='text-center text-red-700' v-else-if="password !== confirmPassword">Your two password doesn't matched</p>
+                <p className='text-center text-red-700' v-if="errorMsg">{{errorMsg}}</p>
                 <input className='bg-slate-700 text-white cursor-pointer' type="submit" value="Register" />
             </form>
             <div className='flex justify-centers items-center pl-[55px]'>
@@ -28,9 +29,11 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import auth from "../firebase.init";
 import {reactive,toRefs,ref} from "vue";
+import {useRouter} from "vue-router";
     export default {
         name: "RegisterA",
         setup(){
+            const router = useRouter();
             const userInfo = reactive({
                 name: '',
                 email: '',
@@ -38,17 +41,36 @@ import {reactive,toRefs,ref} from "vue";
                 confirmPassword: ''
             })
 
-            const error = ref('');
+            const errorMsg = ref('');
 
 
-            const handleSubmit = async () => {
+            const handleSubmit = () => {
                 
                 if(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{6,20})/.test(userInfo.password)){
                    if(userInfo.password === userInfo.confirmPassword){
                        createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
+                       .then((userCredential) => {
+                        console.log(userCredential.user);
+                        router.push('/');
+                       })
                        .catch(error => {
-                        console.error(error);
-                        alert(error.message);
+                        console.error(error.code);
+                        switch(error.code){
+                             case "auth/invalid-email": 
+                                errorMsg.value =  "Invalid Email";
+                                break;
+                             case "auth/email-already-in-use":
+                                errorMsg.value = "This email is already in used";
+                                break;
+                             case "auth/email-already-exists":
+                                errorMsg.value = "Email already exists";
+                                break;
+                             case "auth/invalid-credential":
+                                errorMsg.value = "Doesn't allow creation of multiple account with the same email"
+                                break;
+                             default:
+                                errorMsg.value = error.message;
+                        }
                        })
                    } else{
                     alert("Your two password doesn't matched");
@@ -61,7 +83,7 @@ import {reactive,toRefs,ref} from "vue";
 
             return {
                 ...toRefs(userInfo),
-                error,
+                errorMsg,
                 handleSubmit
             }
         }
