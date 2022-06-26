@@ -1,11 +1,12 @@
 <template>
      <div className='h-12 bg-zinc-400 flex justify-center items-center'>
             <nav className='nav-bar'>
-                <ul>
+                  <ul className='flex justify-center items-center p-2 text-sm font-semibold'>
                     <router-link to="/">Home</router-link>
                     <router-link to="/checkout">Checkout</router-link>
                     <router-link to="/blogs">Blogs</router-link>
-                    <router-link to="/About">About</router-link>
+                    <router-link to="/about">About</router-link>
+                    <router-link to="/info">Info</router-link>
                     <router-link v-if="!isLoggedIn" to="/login">Login</router-link>
                     <button v-else-if="isLoggedIn" @click="handleSignOut">Sign out</button>
                 </ul>

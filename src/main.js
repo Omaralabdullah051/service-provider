@@ -5,6 +5,7 @@ import Home from "@/pages/Home.vue";
 import Checkout from "@/pages/Checkout.vue";
 import Blogs from "@/pages/Blogs.vue";
 import About from "@/pages/About.vue";
+import Info from "@/pages/Info.vue";
 import Login from "@/pages/Login.vue";
 import Register from "@/pages/Register.vue";
 import NotFound from "@/pages/NotFound.vue";
@@ -23,6 +24,7 @@ const router = createRouter({
     },
     { path: "/blogs", name: "BlogsA", component: Blogs },
     { path: "/about", name: "AboutA", component: About },
+    { path: "/info", name: "infoA", component: Info },
     { path: "/login", name: "LoginA", component: Login },
     { path: "/register", name: "RegisterA", component: Register },
     { path: "/:catchAll(.*)", name: "NotFound", component: NotFound },

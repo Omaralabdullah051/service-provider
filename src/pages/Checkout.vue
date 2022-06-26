@@ -1,7 +1,5 @@
 <template>
-    <div>
-        This is a Checkout page
-    </div>
+        <h6 className='text-center mt-10 font-bold md:text-3xl xl:text-4xl mx-2'>Hey Mr.X! Please stay with us for latest update</h6>
 </template>
 
 <script>
