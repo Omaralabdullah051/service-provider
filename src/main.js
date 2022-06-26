@@ -7,6 +7,7 @@ import Blogs from "@/pages/Blogs.vue";
 import About from "@/pages/About.vue";
 import Login from "@/pages/Login.vue";
 import Register from "@/pages/Register.vue";
+import NotFound from "@/pages/NotFound.vue";
 import { onAuthStateChanged } from "firebase/auth";
 import auth from "./firebase.init";
 
@@ -24,6 +25,7 @@ const router = createRouter({
     { path: "/about", name: "AboutA", component: About },
     { path: "/login", name: "LoginA", component: Login },
     { path: "/register", name: "RegisterA", component: Register },
+    { path: "/:catchAll(.*)", name: "NotFound", component: NotFound },
   ],
 });
 
