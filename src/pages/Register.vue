@@ -106,4 +106,21 @@ import SocialLogin from "../components/SocialLogin.vue";
     padding-left: 10px;
     font-weight: 600;
 } 
+
+@media only screen and (max-width:576px) {
+    .auth-container {
+        width: 300px;
+        margin: 40px auto;
+    }
+
+    .form-container input {
+        width: 250px;
+        height: 50px;
+        margin: 25px auto;
+        margin-bottom: 0px;
+        padding-left: 10px;
+        font-weight: 600;
+    }
+
+} 
 </style>

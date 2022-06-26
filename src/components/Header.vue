@@ -53,4 +53,10 @@ import {useRouter} from "vue-router";
 .nav-bar a {
     margin-right: 30px;
 } 
+
+@media only screen and (max-width:576px) {
+    .nav-bar a {
+        margin-right: 8px;
+    }
+} 
 </style>

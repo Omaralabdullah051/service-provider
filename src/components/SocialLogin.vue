@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div className='flex justify-centers items-center pl-[55px]'>
-                <div className='w-44 h-1 bg-slate-700'></div>
-                <div className='mx-2'>Or</div>
-                <div className='w-44 h-1 bg-slate-700'></div>
-        </div>
+        <div className='flex justify-centers items-center pl-[23px] md:pl-[55px] mt-4'>
+                <div className='w-28 md:w-44 h-1 bg-slate-700'></div>
+                <div className='mx-1 md:mx-2'>Or</div>
+                <div className='w-28 md:w-44 h-1 bg-slate-700'></div>
+            </div>
             <p className='text-center text-red-700' v-if="errorMsg">{{errorMsg}}</p>
-            <button @click="signInWithGoogle" className='p-2 bg-slate-700 text-white w-[400px] block mx-auto mt-4 mb-8 font-semibold'>Google Sign In</button>
+            <button @click="signInWithGoogle" className='p-3 bg-slate-700 text-white w-[250px] md:w-[400px] block mx-auto mt-4 mb-8 font-semibold'>Google Sign In</button>
     </div>
 </template>
 

@@ -1,26 +1,26 @@
 <template>
-    <div className='mt-40'>
-            <h3 className='text-center text-slate-800 font-bold'>Additional Services</h3>
-            <div className='grid grid-cols-2 gap-20 mt-8 mb-5 px-2'>
+      <div className='mt-20 md:mt-40'>
+            <h4 className='text-center text-slate-800 font-bold md:text-4xl'>Additional Services</h4>
+               <div className='md:grid grid-cols-2 gap-20 mt-8 mb-5 px-4'>
                 <div className="bg-red-500 text-white font-semibold p-6">
                     <div v-for="(service,index) in services1" :key="index">
                      <p><font-awesome-icon class='mr-4' icon="fa-solid fa-check" />{{service}}</p>
                     </div>
                 </div>
-                <div className='bg-slate-700 text-white font-semibold p-6'>
+                    <div className='bg-slate-700 text-white font-semibold p-4'>
                     <div v-for="(service,index) in services2" :key="index">
                       <p><font-awesome-icon class='mr-4' icon="fa-solid fa-check" />{{service}}</p>
                     </div>
                 </div>
             </div>
-            <div className='mx-2 p-6 bg-teal-400 mb-20 font-semibold flex justify-around items-center'>
-                <div>
+              <div className='mx-4 p-3 bg-teal-400 mb-20 font-semibold md:flex justify-around items-center'>
+                <div className='mt-4 md:mt-0'>
                     <div v-for="(service,index) in services3" :key="index">
-                     <p><font-awesome-icon class='mr-4' icon="fa-solid fa-check" />{{service}}</p>
+                     <p className='text-sm md:text-base' ><font-awesome-icon class='mr-4' icon="fa-solid fa-check" />{{service}}</p>
                     </div>
                 </div>
                 <div>
-                    <img src="images/camera-1.png" alt="" />
+                    <img className='w-9/12 mx-auto md:w-full' src="images/camera-1.png" alt="" />
                 </div>
             </div>
     </div>

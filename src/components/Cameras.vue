@@ -1,7 +1,7 @@
 <template>
      <div className='mt-20'>
-            <h3 className='font-bold text-center text-slate-800'>Landscape photography</h3>
-            <div className='grid grid-cols-3 gap-10 p-12'>
+              <h4 className='font-bold text-center text-slate-800 md:text-4xl'>Landscape photography</h4>
+             <div className='lg:grid grid-cols-3 lg:gap-4 xl:gap-10 p-3 lg:p-4 xl:p-12'>
             <div v-for="camera in cameraInfo" :key="camera.id">
                     <Camera :camera="camera"/>
             </div>

@@ -68,23 +68,3 @@ import SocialLogin from "../components/SocialLogin.vue";
         components: {SocialLogin}
     }
 </script>
-
-<style>
-.auth-container {
-    width: 500px;
-    border: 2px solid gray;
-    border-radius: 5px;
-    margin: 40px auto;
-}
-
-.form-container input {
-    width: 400px;
-    height: 50px;
-    border: 2px solid gray;
-    border-radius: 2px;
-    display: block;
-    margin: 30px auto;
-    padding-left: 10px;
-    font-weight: 600;
-} 
-</style>
