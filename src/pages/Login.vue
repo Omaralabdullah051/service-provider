@@ -6,24 +6,21 @@
                 <p v-if="!email"></p>
                 <p className='text-center text-red-700' v-else-if="!/\S+@\S+\.\S+/.test(email)">Please provide a valid email</p>
                 <input type="password" name="password" id="password" placeholder='Password' v-model="password" required/>
+                <p className='text-center mt-4'>New to this site? <router-link className='text-slate-700 font-bold' to="/register" >Please Register</router-link></p>
                 <p className='text-center text-red-700' v-if="errorMsg">{{errorMsg}}</p>
                 <input className='bg-slate-700 text-white cursor-pointer' type="submit" value="Login" />
             </form>
-            <div className='flex justify-centers items-center pl-[55px]'>
-                <div className='w-44 h-1 bg-slate-700'></div>
-                <div className='mx-2'>Or</div>
-                <div className='w-44 h-1 bg-slate-700'></div>
-            </div>
-            <button className='p-2 bg-slate-700 text-white w-[400px] block mx-auto mt-4 mb-8 font-semibold'>Google Sign In</button>
+            <SocialLogin/>
         </div>
 </template>
 
 <script>
 // import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth, sendEmailVerification, sendPasswordResetEmail, updateProfile } from "firebase/auth";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword  } from "firebase/auth";
 import auth from "../firebase.init";
 import {reactive,toRefs,ref} from "vue";
 import {useRouter} from "vue-router";
+import SocialLogin from "../components/SocialLogin.vue";
     export default {
         name: "LoginA",
         setup(){
@@ -65,9 +62,10 @@ import {useRouter} from "vue-router";
             return {
                 ...toRefs(userInfo),
                 errorMsg,
-                handleSubmit
+                handleSubmit,
             }
-        }
+        },
+        components: {SocialLogin}
     }
 </script>
 

@@ -12,15 +12,11 @@
                 <input type="password" name="confirm-password" id="confirm-password" placeholder='Confirm password' v-model="confirmPassword" required/>
                 <p v-if="!confirmPassword"></p>
                 <p className='text-center text-red-700' v-else-if="password !== confirmPassword">Your two password doesn't matched</p>
+                <p className='text-center mt-4'>Already have an account? <router-link className='text-slate-700 font-bold' to="/login" >Please Login</router-link></p>
                 <p className='text-center text-red-700' v-if="errorMsg">{{errorMsg}}</p>
                 <input className='bg-slate-700 text-white cursor-pointer' type="submit" value="Register" />
             </form>
-            <div className='flex justify-centers items-center pl-[55px]'>
-                <div className='w-44 h-1 bg-slate-700'></div>
-                <div className='mx-2'>Or</div>
-                <div className='w-44 h-1 bg-slate-700'></div>
-            </div>
-            <button className='p-2 bg-slate-700 text-white w-[400px] block mx-auto mt-4 mb-8 font-semibold'>Google Sign In</button>
+            <SocialLogin/>
         </div>
 </template>
 
@@ -30,6 +26,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import auth from "../firebase.init";
 import {reactive,toRefs,ref} from "vue";
 import {useRouter} from "vue-router";
+import SocialLogin from "../components/SocialLogin.vue";
     export default {
         name: "RegisterA",
         setup(){
@@ -86,7 +83,8 @@ import {useRouter} from "vue-router";
                 errorMsg,
                 handleSubmit
             }
-        }
+        },
+        components: {SocialLogin}
     }
 </script>
 

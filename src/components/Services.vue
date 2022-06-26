@@ -1,6 +1,6 @@
 <template>
     <div>
-            <h2 className='font-bold text-zinc-900 text-center mt-20'>Our Services</h2>
+            <h2 className='font-bold text-slate-800 text-center mt-20'>Our Services</h2>
             <div className='grid grid-cols-3 gap-6 p-8'>
                 <div v-for="service in services" :key="service.id">
                     <Service :service="service"/>
