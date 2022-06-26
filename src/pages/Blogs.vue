@@ -1,12 +1,14 @@
 <template>
-    <div>
-        This is a Blogs page
-    </div>
+   <Question1/>
 </template>
 
 <script>
+import Question1 from "../components/Question1.vue";
     export default {
-        name: "BlogsA"
+        name: "BlogsA",
+        components: {
+            Question1,
+        }
     }
 </script>
 
