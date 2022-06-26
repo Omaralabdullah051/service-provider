@@ -1,11 +1,17 @@
 <template>
      <div className='auth-container'>
             <h4 className='text-center font-bold mt-4 text-slate-700'>Please Register</h4>
-            <form className='form-container mt-12'>
-                <input type="text" name="name" id="name" placeholder='Your name' />
-                <input type="email" name="email" id="email" placeholder='Your Email' />
-                <input type="password" name="password" id="password" placeholder='Password' />
-                <input type="password" name="confirm-password" id="confirm-password" placeholder='Confirm password' />
+            <form @submit.prevent="handleSubmit" className='form-container mt-12'>
+                <input type="text" name="name" id="name" placeholder='Your name' v-model="name" required/>
+                <input type="email" name="email" id="email" placeholder='Your Email' v-model="email" required/>
+                <p v-if="!email"></p>
+                <p className='text-center text-red-700' v-else-if="!/\S+@\S+\.\S+/.test(email)">Please provide a valid email</p>
+                <input type="password" name="password" id="password" placeholder='Password' v-model="password" required/>
+                <p v-if="!password"></p>
+                <p className='text-center text-red-700' v-else-if="!/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{6,20})/.test(password)">Your password must contain at least one digit, lowercase, special character and min 8 characters</p>
+                <input type="password" name="confirm-password" id="confirm-password" placeholder='Confirm password' v-model="confirmPassword" required/>
+                <p v-if="!confirmPassword"></p>
+                <p className='text-center text-red-700' v-else-if="password !== confirmPassword">Your two password doesn't matched</p>
                 <input className='bg-slate-700 text-white cursor-pointer' type="submit" value="Register" />
             </form>
             <div className='flex justify-centers items-center pl-[55px]'>
@@ -18,8 +24,47 @@
 </template>
 
 <script>
+// import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth, sendEmailVerification, sendPasswordResetEmail, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import auth from "../firebase.init";
+import {reactive,toRefs,ref} from "vue";
     export default {
-        name: "RegisterA"
+        name: "RegisterA",
+        setup(){
+            const userInfo = reactive({
+                name: '',
+                email: '',
+                password: '',
+                confirmPassword: ''
+            })
+
+            const error = ref('');
+
+
+            const handleSubmit = async () => {
+                
+                if(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{6,20})/.test(userInfo.password)){
+                   if(userInfo.password === userInfo.confirmPassword){
+                       createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
+                       .catch(error => {
+                        console.error(error);
+                        alert(error.message);
+                       })
+                   } else{
+                    alert("Your two password doesn't matched");
+                   }
+                } else{
+                    alert("Your password must contain at least one digit, lowercase, special character and min 8 characters")
+                }
+               
+            }
+
+            return {
+                ...toRefs(userInfo),
+                error,
+                handleSubmit
+            }
+        }
     }
 </script>
 
