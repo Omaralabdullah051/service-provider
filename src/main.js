@@ -29,6 +29,9 @@ const router = createRouter({
     { path: "/register", name: "RegisterA", component: Register },
     { path: "/:catchAll(.*)", name: "NotFound", component: NotFound },
   ],
+  scrollBehavior() {
+    document.getElementById("app").scrollIntoView({ behavior: "smooth" });
+  },
 });
 
 const getCurrentUser = () => {

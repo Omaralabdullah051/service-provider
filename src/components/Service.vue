@@ -4,13 +4,24 @@
             <p className='font-semibold md:text-xl'>{{service.name}}</p>
             <p className='md:text-xl'>{{service.price}}</p>
             <p className='text-xs md:text-sm xl:text-base text-justify'>{{service.discription.slice(0, 280)}}{{`.......................................`}}</p>
-            <button className='p-2 bg-slate-800 mt-8 text-white rounded block mx-auto'>Checkout</button>
+            <button @click="handleNavigate" className='p-2 bg-slate-800 mt-8 text-white rounded block mx-auto'>Checkout</button>
         </div>
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
     export default {
         name: "ServiceA",
+        setup(){
+          const router = useRouter()  ;
+          const handleNavigate = () => {
+               router.push('/checkout');
+          }
+
+          return {
+            handleNavigate
+          }
+        },
         props: ['service']
     }
 </script>

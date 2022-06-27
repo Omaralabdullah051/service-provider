@@ -22,6 +22,7 @@ import auth from "../firebase.init";
 import {reactive,toRefs,ref} from "vue";
 import {useRouter} from "vue-router";
 import SocialLogin from "../components/SocialLogin.vue";
+import Swal from 'sweetalert2';
     export default {
         name: "LoginA",
         setup(){
@@ -46,15 +47,43 @@ import SocialLogin from "../components/SocialLogin.vue";
                         switch(error.code){
                              case "auth/invalid-email": 
                                 errorMsg.value =  "Invalid Email";
+                                Swal.fire({
+                                   title: 'Error!',
+                                   text: "Invalid Email",
+                                   icon: 'error',
+                                   confirmButtonText: 'Ok',
+                                   confirmButtonColor: "#1e293b"
+                                });
                                 break;
                              case "auth/user-not-found":
                                 errorMsg.value = "User not found";
+                                Swal.fire({
+                                   title: 'Error!',
+                                   text: "User not found",
+                                   icon: 'error',
+                                   confirmButtonText: 'Ok',
+                                   confirmButtonColor: "#1e293b"
+                                });
                                 break;
                              case "auth/wrong-password":
                                 errorMsg.value = "Wrong password";
+                                Swal.fire({
+                                   title: 'Error!',
+                                   text: "Wrong password",
+                                   icon: 'error',
+                                   confirmButtonText: 'Ok',
+                                   confirmButtonColor: "#1e293b"
+                                });
                                 break;
                              default:
                                 errorMsg.value = error.message;
+                                Swal.fire({
+                                   title: 'Error!',
+                                   text: error.message,
+                                   icon: 'error',
+                                   confirmButtonText: 'Ok',
+                                   confirmButtonColor: "#1e293b"
+                                });
                         }
                        })
                

@@ -10,7 +10,7 @@
                 <p className='text-center text-red-700' v-else-if="!/\S+@\S+\.\S+/.test(email)">Please provide a valid email</p>
                 <input type="password" name="password" id="password" placeholder='Password' v-model="password" required/>
                 <p v-if="!password"></p>
-                <p className='text-center text-red-700' v-else-if="!/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{6,20})/.test(password)">Your password must contain at least one digit, lowercase, special character and min 8 characters</p>
+                <p className='text-center text-red-700 text-sm px-8' v-else-if="!/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{6,20})/.test(password)">Your password must contain at least one digit, lowercase, special character and min 8 characters</p>
                 <input type="password" name="confirm-password" id="confirm-password" placeholder='Confirm password' v-model="confirmPassword" required/>
                 <p v-if="!confirmPassword"></p>
                 <p className='text-center text-red-700' v-else-if="password !== confirmPassword">Your two password doesn't matched</p>
@@ -28,6 +28,8 @@ import auth from "../firebase.init";
 import {reactive,toRefs,ref} from "vue";
 import {useRouter} from "vue-router";
 import SocialLogin from "../components/SocialLogin.vue";
+import Swal from 'sweetalert2';
+
     export default {
         name: "RegisterA",
         setup(){
@@ -56,25 +58,72 @@ import SocialLogin from "../components/SocialLogin.vue";
                         switch(error.code){
                              case "auth/invalid-email": 
                                 errorMsg.value =  "Invalid Email";
+                                Swal.fire({
+                                   title: 'Error!',
+                                   text: "Invalid Email",
+                                   icon: 'error',
+                                   confirmButtonText: 'Ok',
+                                   confirmButtonColor: "#1e293b"
+                                });            
                                 break;
                              case "auth/email-already-in-use":
                                 errorMsg.value = "This email is already in used";
+                                Swal.fire({
+                                   title: 'Error!',
+                                   text: "This email is already in used",
+                                   icon: 'error',
+                                   confirmButtonText: 'Ok',
+                                   confirmButtonColor: "#1e293b"
+                                });            
                                 break;
                              case "auth/email-already-exists":
                                 errorMsg.value = "Email already exists";
+                                Swal.fire({
+                                   title: 'Error!',
+                                   text: "Email already exists",
+                                   icon: 'error',
+                                   confirmButtonText: 'Ok',
+                                   confirmButtonColor: "#1e293b"
+                                });            
                                 break;
                              case "auth/invalid-credential":
-                                errorMsg.value = "Doesn't allow creation of multiple account with the same email"
+                                errorMsg.value = "Doesn't allow creation of multiple account with the same email";
+                                Swal.fire({
+                                   title: 'Error!',
+                                   text: "Doesn't allow creation of multiple account with the same email",
+                                   icon: 'error',
+                                   confirmButtonText: 'Ok',
+                                   confirmButtonColor: "#1e293b"
+                                });            
                                 break;
                              default:
                                 errorMsg.value = error.message;
+                                Swal.fire({
+                                   title: 'Error!',
+                                   text: error.message,
+                                   icon: 'error',
+                                   confirmButtonText: 'Ok',
+                                   confirmButtonColor: "#1e293b"
+                                });
                         }
                        })
                    } else{
-                    alert("Your two password doesn't matched");
+                    Swal.fire({
+                        title: 'Error!',
+                        text: "Your two password doesn't matched",
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                        confirmButtonColor: "#1e293b"
+                    });
                    }
                 } else{
-                    alert("Your password must contain at least one digit, lowercase, special character and min 8 characters")
+                        Swal.fire({
+                        title: 'Error!',
+                        text: "Your password must contain at least one digit, lowercase, special character and min 8 characters",
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                        confirmButtonColor: "#1e293b"
+                    })
                 }
                
             }
@@ -110,12 +159,13 @@ import SocialLogin from "../components/SocialLogin.vue";
 
 @media only screen and (max-width:576px) {
     .auth-container {
-        width: 300px;
+        width: 320px;
         margin: 40px auto;
+        border: 0px;
     }
 
     .form-container input {
-        width: 250px;
+        width: 300px;
         height: 50px;
         margin: 25px auto;
         margin-bottom: 0px;
