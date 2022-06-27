@@ -1,5 +1,5 @@
 <template>
-      <div className='camera-container text-justify'>
+      <div className='camera-container text-justify h-[480px]'>
             <img :src="camera.img" alt="" />
             <h4>{{camera.title}}</h4>
             <p>{{camera.discription}}</p>
